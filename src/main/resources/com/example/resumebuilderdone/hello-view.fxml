@@ -103,5 +103,6 @@
         <Button fx:id="btnClear" layoutX="466.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#ClearClicked" text="Clear" />
         <Button fx:id="btnSave" layoutX="905.0" layoutY="712.0" mnemonicParsing="false" onMouseClicked="#SaveClicked" text="Save" />
         <Button fx:id="btnGenarate" layoutX="683.0" layoutY="712.0" mnemonicParsing="false" onMouseClicked="#GenerateClicked" text="Generate" />
+        <Button fx:id="showDialog" layoutX="550.0" layoutY="743.0" mnemonicParsing="false" onAction="#showDialog" text="Help" />
     </children>
 </Pane>

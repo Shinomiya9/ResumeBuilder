@@ -6,8 +6,11 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -17,6 +20,7 @@ import java.io.PrintWriter;
 
 import javax.swing.*;
 import java.io.FileOutputStream;
+import java.util.Optional;
 
 public class HelloController{
 
@@ -30,7 +34,10 @@ public class HelloController{
     protected Button btnSave;
 
     @FXML
-    protected TextField txtCV;
+    protected Button showDialog;
+
+    @FXML
+    private TextField txtCV;
 
     @FXML
     protected TextField txtAward1;
@@ -115,15 +122,10 @@ public class HelloController{
 
     @FXML
     protected TextField txtSkill4;
-
-    @FXML
-    public void CVClicked(MouseEvent event) {
-
-    }
-
+    showDialog dialog = new showDialog();
     public void ClearClicked(MouseEvent event) {
-        /*Clear clear = new Clear();
-        clear.clearBtn();*/
+        //Clear clear = new Clear();
+        //clear.clearBtn();
         txtName.clear();
         txtEmail.clear();
         txtPhone.clear();
@@ -157,30 +159,118 @@ public class HelloController{
         txtEducationDesc2.clear();
         txtEducationDate1.clear();
         txtEducationDate2.clear();
+
+        dialog.showClear();
     }
 
     @FXML
-     void SaveClicked(MouseEvent event) {
-        /*Save save = new Save();
-        save.saveToFile();*/
+    void SaveClicked(MouseEvent event) {
         saveToFile();
     }
 
     @FXML
-    public void GenerateClicked(MouseEvent event)
-    {
+    public void GenerateClicked(MouseEvent event) {
+        GenToPdf();
+    }
+    @FXML
+    void showDialog(ActionEvent event) {
+        dialog.showDialog();
+    }
+
+    private void saveToFile() {
+        /*Save save = new Save();
+        save.saveToFile();*/
+        if (txtName.getText().isEmpty()|| txtPhone.getText().isEmpty() || txtEmail.getText().isEmpty())
+        {
+            dialog.showErrorSave();
+
+        } else {
+            String fileName = txtCV.getText();
+
+            try (PrintWriter writer = new PrintWriter(new FileWriter(fileName, true))) {
+                String name = txtName.getText();
+                String phoneNumber = txtPhone.getText();
+                String email = txtEmail.getText();
+                String skill1 = txtSkill1.getText();
+                String skill2 = txtSkill2.getText();
+                String skill3 = txtSkill3.getText();
+                String skill4 = txtSkill4.getText();
+                String award1 = txtAward1.getText();
+                String award2 = txtAward2.getText();
+                String award3 = txtAward3.getText();
+                String jobTitle1 = txtJobTitle1.getText();
+                String jobDesc1 = txtJobDesc1.getText();
+                String jobDuration1 = txtJobDuration1.getText();
+                String jobTitle2 = txtJobTitle2.getText();
+                String jobDesc2 = txtJobDesc2.getText();
+                String jobDuration2 = txtJobDuration2.getText();
+                String project1 = txtProject1.getText();
+                String projectDesc1 = txtProjectDesc1.getText();
+                String projectDate1 = txtDate1.getText();
+                String project2 = txtProject2.getText();
+                String projectDesc2 = txtProjectDesc2.getText();
+                String projectDate2 = txtDate2.getText();
+                String education1 = txtEducation1.getText();
+                String educationDesc1 = txtEducationDesc1.getText();
+                String educationDate1 = txtEducationDate1.getText();
+                String education2 = txtEducation2.getText();
+                String educationDesc2 = txtEducationDesc2.getText();
+                String educationDate2 = txtEducationDate2.getText();
+
+                writer.println("START DOC");
+                writer.println("Name: " + name);
+                writer.println("Phone Number: " + phoneNumber);
+                writer.println("Email: " + email);
+                writer.println("Skill1: " + skill1);
+                writer.println("Skill2: " + skill2);
+                writer.println("Skill3: " + skill3);
+                writer.println("Skill4: " + skill4);
+                writer.println("Award1: " + award1);
+                writer.println("Award2: " + award2);
+                writer.println("Award3: " + award3);
+                writer.println("JobTitle1: " + jobTitle1);
+                writer.println("JobDesc1: " + jobDesc1);
+                writer.println("JobDate1: " + jobDuration1);
+                writer.println("JobTitle2: " + jobTitle2);
+                writer.println("JobDesc2: " + jobDesc2);
+                writer.println("JobDate2: " + jobDuration2);
+                writer.println("Project1: " + project1);
+                writer.println("ProjectDesc1: " + projectDesc1);
+                writer.println("ProjectDate1: " + projectDate1);
+                writer.println("Project2: " + project2);
+                writer.println("ProjectDesc2: " + projectDesc2);
+                writer.println("ProjectDate2: " + projectDate2);
+                writer.println("Education1: " + education1);
+                writer.println("EducationDecs1: " + educationDesc1);
+                writer.println("EducationDate1: " + educationDate1);
+                writer.println("Education2: " + education2);
+                writer.println("EducationDecs2: " + educationDesc2);
+                writer.println("EducationDate2: " + educationDate2);
+                writer.println("FINISH DOC");
+
+                System.out.println("Data saved to file successfully.");
+                dialog.showSave();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private void GenToPdf(){
         /*Generate gen = new Generate();
         gen.Generate();*/
         if (txtName.getText().isEmpty()|| txtPhone.getText().isEmpty() || txtEmail.getText().isEmpty())
         {
-            JOptionPane.showMessageDialog(null, "PLEASE ENTER ALL DETAILS TO GENERATE CV");
+            dialog.showErrorGen();
 
         } else
         {
             try {
+                String fileName = txtCV.getText();
                 Document document = new Document();
+                String filename = textName();
 
-                String filePath = "Resume.pdf";
+                String filePath = fileName + ".pdf";
                 PdfWriter.getInstance(document, new FileOutputStream(filePath));
 
                 document.open();
@@ -239,76 +329,17 @@ public class HelloController{
                 document.close();
 
                 System.out.println("PDF generated successfully at: " + filePath);
+                dialog.showConfirmation();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
-
     }
-        private void saveToFile() {
-            try (PrintWriter writer = new PrintWriter(new FileWriter("output.txt", true))) {
-                String name = txtName.getText();
-                String phoneNumber = txtPhone.getText();
-                String email = txtEmail.getText();
-                String skill1 = txtSkill1.getText();
-                String skill2 = txtSkill2.getText();
-                String skill3 = txtSkill3.getText();
-                String skill4 = txtSkill4.getText();
-                String award1 = txtAward1.getText();
-                String award2 = txtAward2.getText();
-                String award3 = txtAward3.getText();
-                String jobTitle1 = txtJobTitle1.getText();
-                String jobDesc1 = txtJobDesc1.getText();
-                String jobDuration1 = txtJobDuration1.getText();
-                String jobTitle2 = txtJobTitle2.getText();
-                String jobDesc2 = txtJobDesc2.getText();
-                String jobDuration2 = txtJobDuration2.getText();
-                String project1 = txtProject1.getText();
-                String projectDesc1 = txtProjectDesc1.getText();
-                String projectDate1 = txtDate1.getText();
-                String project2 = txtProject2.getText();
-                String projectDesc2 = txtProjectDesc2.getText();
-                String projectDate2 = txtDate2.getText();
-                String education1= txtEducation1.getText();
-                String educationDesc1 = txtEducationDesc1.getText();
-                String educationDate1 = txtEducationDate1.getText();
-                String education2= txtEducation2.getText();
-                String educationDesc2 = txtEducationDesc2.getText();
-                String educationDate2 = txtEducationDate2.getText();
+    String textName(){
+        String txtFileName = txtCV.getText();
+        return txtFileName;
+    }
 
-                writer.println("Name: " + name);
-                writer.println("Phone Number: " + phoneNumber);
-                writer.println("Email: "+email);
-                writer.println("Skill1: "+skill1);
-                writer.println("Skill2: "+skill2);
-                writer.println("Skill3: "+skill3);
-                writer.println("Skill4: "+skill4);
-                writer.println("Award1: "+award1);
-                writer.println("Award2: "+award2);
-                writer.println("Award3: "+award3);
-                writer.println("JobTitle1: "+jobTitle1);
-                writer.println("JobDesc1: "+jobDesc1);
-                writer.println("JobDate1: "+jobDuration1);
-                writer.println("JobTitle2: "+jobTitle2);
-                writer.println("JobDesc2: "+jobDesc2);
-                writer.println("JobDate2: "+jobDuration2);
-                writer.println("Project1: "+project1);
-                writer.println("ProjectDesc1: "+projectDesc1);
-                writer.println("ProjectDate1: "+projectDate1);
-                writer.println("Project2: "+project2);
-                writer.println("ProjectDesc2: "+projectDesc2);
-                writer.println("ProjectDate2: "+projectDate2);
-                writer.println("Education1: "+education1);
-                writer.println("EducationDecs1: "+educationDesc1);
-                writer.println("EducationDate1: "+educationDate1);
-                writer.println("Education2: "+education2);
-                writer.println("EducationDecs2: "+educationDesc2);
-                writer.println("EducationDate2: "+educationDate2);
-
-                System.out.println("Data saved to file successfully.");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-}
 }
