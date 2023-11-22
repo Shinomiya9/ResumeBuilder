@@ -1,9 +1,10 @@
 package com.example.resumebuilderdone;
 import javafx.scene.control.Alert;
 import java.util.Optional;
+
+// Ady
 public class showDialog {
     Alert a = new Alert(Alert.AlertType.NONE);
-    String filepath;
 
     public void showDialog() {
         // set alert type
@@ -15,6 +16,7 @@ public class showDialog {
         // show dialog
         a.show();
     }
+
     public void showErrorGen() {
         //set alert type
         a.setAlertType(Alert.AlertType.ERROR);
@@ -60,6 +62,7 @@ public class showDialog {
         a.show();
 
     }
+
     public void showErrorSave() {
         //set alert type
         a.setAlertType(Alert.AlertType.ERROR);
@@ -81,5 +84,4 @@ public class showDialog {
         //show dialog
         a.show();
     }
-
 }

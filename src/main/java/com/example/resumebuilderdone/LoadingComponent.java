@@ -6,6 +6,7 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+// Han Min
 public class LoadingComponent extends StackPane {
 
     public LoadingComponent() {

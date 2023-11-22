@@ -39,17 +39,19 @@ public class HelloController {
     protected Button btnClear;
 
     @FXML
-    protected Button btnGenarate;
+    protected Button btnGenerate;
 
     @FXML
     protected Button btnSave;
 
     @FXML
     protected Button showDialog;
+
     @FXML
     protected Button btnLoad;
+
     @FXML
-    private TextField txtCV;
+    protected TextField txtCV;
 
     @FXML
     protected TextField txtAward1;
@@ -137,7 +139,9 @@ public class HelloController {
     showDialog dialog = new showDialog();
 
     private Window primaryStage;
-    void loadingClear(){
+
+    //Han Min
+    protected void loadingClear(){
         Stage primaryStage = new Stage();
         LoadingComponent loading = new LoadingComponent();
 
@@ -162,7 +166,7 @@ public class HelloController {
             e.printStackTrace();
         }
     }
-    void loadingGen(){
+    protected void loadingGen(){
         Stage primaryStage = new Stage();
         LoadingComponent loading = new LoadingComponent();
 
@@ -187,7 +191,7 @@ public class HelloController {
             e.printStackTrace();
         }
     }
-    void loadingsave(){
+    protected void loadingSave(){
         Stage primaryStage = new Stage();
         LoadingComponent loading = new LoadingComponent();
 
@@ -212,7 +216,7 @@ public class HelloController {
             e.printStackTrace();
         }
     }
-    void loadingLoad(){
+    protected void loadingLoad(){
         Stage primaryStage = new Stage();
         LoadingComponent loading = new LoadingComponent();
 
@@ -238,62 +242,7 @@ public class HelloController {
         }
     }
 
-
-    public void ClearClicked(MouseEvent event) {
-        //Clear clear = new Clear();
-        //clear.clearBtn();
-
-        txtName.clear();
-        txtEmail.clear();
-        txtPhone.clear();
-
-        txtSkill1.clear();
-        txtSkill2.clear();
-        txtSkill3.clear();
-        txtSkill4.clear();
-
-        txtAward1.clear();
-        txtAward2.clear();
-        txtAward3.clear();
-
-        txtJobTitle1.clear();
-        txtJobTitle2.clear();
-        txtJobDesc1.clear();
-        txtJobDesc2.clear();
-        txtJobDuration1.clear();
-        txtJobDuration2.clear();
-
-        txtProject1.clear();
-        txtProjectDesc1.clear();
-        txtDate1.clear();
-        txtProject2.clear();
-        txtProjectDesc2.clear();
-        txtDate2.clear();
-
-        txtEducation1.clear();
-        txtEducation2.clear();
-        txtEducationDesc1.clear();
-        txtEducationDesc2.clear();
-        txtEducationDate1.clear();
-        txtEducationDate2.clear();
-        loadingClear();
-    }
-
-    @FXML
-    void SaveClicked(MouseEvent event) {
-        saveToFile();
-    }
-
-    @FXML
-    public void GenerateClicked(MouseEvent event) {
-        GenToPdf();
-    }
-
-    @FXML
-    void showDialog(ActionEvent event) {
-        dialog.showDialog();
-    }
-
+    // Kaisan
     private void saveToFile() {
         /*Save save = new Save();
         save.saveToFile();*/
@@ -363,14 +312,14 @@ public class HelloController {
                 writer.println("EducationDate2: " + educationDate2);
 
                 System.out.println("Data saved to file successfully.");
-                loadingsave();
+                loadingSave();
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-
+    // Eason
     private void GenToPdf() {
         /*Generate gen = new Generate();
         gen.Generate();*/
@@ -450,14 +399,14 @@ public class HelloController {
 
         }
     }
-
-    String textName() {
+    // Kaisan / Eason
+    protected String textName() {
         String txtFileName = txtCV.getText();
         return txtFileName;
     }
 
-    @FXML
-    void loadClicked(MouseEvent event) {
+    @FXML // Ang
+    public void loadClicked(MouseEvent event) {
         // Create a FileChooser
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
@@ -730,5 +679,63 @@ public class HelloController {
             } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML // Kaisan
+    public void SaveClicked(MouseEvent event) {
+        saveToFile();
+    }
+
+    @FXML // Eason
+    public void GenerateClicked(MouseEvent event) {
+        GenToPdf();
+    }
+
+    @FXML // Ady
+    public void showDialog(ActionEvent event) {
+        dialog.showDialog();
+    }
+
+    @FXML // Han Min
+    public void ClearClicked(MouseEvent event) {
+        //Clear clear = new Clear();
+        //clear.clearBtn();
+
+        txtName.clear();
+        txtEmail.clear();
+        txtPhone.clear();
+
+        txtSkill1.clear();
+        txtSkill2.clear();
+        txtSkill3.clear();
+        txtSkill4.clear();
+
+        txtAward1.clear();
+        txtAward2.clear();
+        txtAward3.clear();
+
+        txtJobTitle1.clear();
+        txtJobTitle2.clear();
+        txtJobDesc1.clear();
+        txtJobDesc2.clear();
+        txtJobDuration1.clear();
+        txtJobDuration2.clear();
+
+        txtProject1.clear();
+        txtProjectDesc1.clear();
+        txtDate1.clear();
+        txtProject2.clear();
+        txtProjectDesc2.clear();
+        txtDate2.clear();
+
+        txtEducation1.clear();
+        txtEducation2.clear();
+        txtEducationDesc1.clear();
+        txtEducationDesc2.clear();
+        txtEducationDate1.clear();
+        txtEducationDate2.clear();
+        loadingClear();
+
+        System.out.println("Cleared");
     }
 }

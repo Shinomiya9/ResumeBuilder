@@ -102,7 +102,7 @@
         <TextField fx:id="txtEducationDate2" layoutX="552.0" layoutY="659.0" prefHeight="25.0" prefWidth="394.0" />
         <Button fx:id="btnClear" layoutX="529.0" layoutY="711.0" mnemonicParsing="false" onMouseClicked="#ClearClicked" text="Clear" />
         <Button fx:id="btnSave" layoutX="905.0" layoutY="712.0" mnemonicParsing="false" onMouseClicked="#SaveClicked" text="Save" />
-        <Button fx:id="btnGenarate" layoutX="700.0" layoutY="712.0" mnemonicParsing="false" onMouseClicked="#GenerateClicked" text="Generate" />
+        <Button fx:id="btnGenerate" layoutX="700.0" layoutY="712.0" mnemonicParsing="false" onMouseClicked="#GenerateClicked" text="Generate" />
         <Button fx:id="showDialog" layoutX="807.0" layoutY="711.0" mnemonicParsing="false" onAction="#showDialog" text="Help" />
         <Button fx:id="btnLoad" layoutX="620.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#loadClicked" text="Load" />
     </children>

@@ -1,40 +1,42 @@
 package com.example.resumebuilderdone;
-
+//Han Min
 public class Clear extends HelloController {
-    public void clearBtn()  {
-        HelloController hi = new HelloController();
-        hi.txtName.clear();
-        hi.txtEmail.clear();
-        hi.txtPhone.clear();
+    public void clearBtn() {
+        txtName.clear();
+        txtEmail.clear();
+        txtPhone.clear();
 
-        hi.txtSkill1.clear();
-        hi.txtSkill2.clear();
-        hi.txtSkill3.clear();
-        hi.txtSkill4.clear();
+        txtSkill1.clear();
+        txtSkill2.clear();
+        txtSkill3.clear();
+        txtSkill4.clear();
 
-        hi.txtAward1.clear();
-        hi.txtAward2.clear();
-        hi.txtAward3.clear();
+        txtAward1.clear();
+        txtAward2.clear();
+        txtAward3.clear();
 
-        hi.txtJobTitle1.clear();
-        hi.txtJobTitle2.clear();
-        hi.txtJobDesc1.clear();
-        hi.txtJobDesc2.clear();
-        hi.txtJobDuration1.clear();
-        hi.txtJobDuration2.clear();
+        txtJobTitle1.clear();
+        txtJobTitle2.clear();
+        txtJobDesc1.clear();
+        txtJobDesc2.clear();
+        txtJobDuration1.clear();
+        txtJobDuration2.clear();
 
-        hi.txtProject1.clear();
-        hi.txtProjectDesc1.clear();
-        hi.txtDate1.clear();
-        hi.txtProject2.clear();
-        hi.txtProjectDesc2.clear();
-        hi.txtDate2.clear();
+        txtProject1.clear();
+        txtProjectDesc1.clear();
+        txtDate1.clear();
+        txtProject2.clear();
+        txtProjectDesc2.clear();
+        txtDate2.clear();
 
-        hi.txtEducation1.clear();
-        hi.txtEducation2.clear();
-        hi.txtEducationDesc1.clear();
-        hi.txtEducationDesc2.clear();
-        hi.txtEducationDate1.clear();
-        hi.txtEducationDate2.clear();
+        txtEducation1.clear();
+        txtEducation2.clear();
+        txtEducationDesc1.clear();
+        txtEducationDesc2.clear();
+        txtEducationDate1.clear();
+        txtEducationDate2.clear();
+        loadingClear();
+
+        System.out.println("Cleared");
     }
 }
