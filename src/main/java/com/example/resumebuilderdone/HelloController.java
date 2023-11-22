@@ -701,6 +701,8 @@ public class HelloController {
         //Clear clear = new Clear();
         //clear.clearBtn();
 
+        txtCV.clear();
+
         txtName.clear();
         txtEmail.clear();
         txtPhone.clear();

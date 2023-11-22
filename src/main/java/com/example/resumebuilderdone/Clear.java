@@ -2,6 +2,8 @@ package com.example.resumebuilderdone;
 //Han Min
 public class Clear extends HelloController {
     public void clearBtn() {
+        txtCV.clear();
+
         txtName.clear();
         txtEmail.clear();
         txtPhone.clear();
