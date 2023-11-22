@@ -10,7 +10,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import javax.swing.*;
 import java.io.FileOutputStream;
 
-public class Generate {
+public class Generate extends HelloController {
     public void Generate(){
         HelloController hi = new HelloController();
         if (hi.txtName.getText().isEmpty()|| hi.txtPhone.getText().isEmpty() || hi.txtEmail.getText().isEmpty())

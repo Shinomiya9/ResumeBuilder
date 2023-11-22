@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Save {
+public class Save extends HelloController {
     public void saveToFile(){
         HelloController hi = new HelloController();
         try (PrintWriter writer = new PrintWriter(new FileWriter("output.txt", true))) {

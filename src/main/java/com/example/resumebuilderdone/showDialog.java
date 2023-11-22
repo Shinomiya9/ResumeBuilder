@@ -24,7 +24,7 @@ public class showDialog {
         a.setContentText("PLEASE ENTER ALL DETAILS TO GENERATE CV");
         //show dialog
         a.show();
-        }
+    }
 
     public void showConfirmation() {
         // set alert type
@@ -71,5 +71,15 @@ public class showDialog {
         a.show();
     }
 
-}
+    public void showLoad() {
+        //set alert type
+        a.setAlertType(Alert.AlertType.INFORMATION);
+        //set title
+        a.setTitle("Success");
+        //set context/message
+        a.setContentText("File loaded sucessfully");
+        //show dialog
+        a.show();
+    }
 
+}
